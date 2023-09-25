@@ -1,0 +1,20 @@
+<div class="">
+  <h1>Search Results</h1>
+  <% if @recipes.present? %>
+    <div class="grid grid-cols-4 gap-4">
+      <% @recipes.each do |recipe| %>
+        <div class="border p-5 ">
+          <div class="text-xl font-bold mb-5"><%= recipe.title %></div>
+          <div class="flex mb-5 justify-center"><%= image_tag recipe.image, class: "w-20 h-30" %></div>
+          <div>
+            <% recipe.ingredients_list.split("\n").each do |ingredient| %>
+              <li><%= ingredient %></li>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>No matching recipes found.</p>
+  <% end %>
+</div>

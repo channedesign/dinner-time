@@ -1,0 +1,17 @@
+<div>
+  <h1>Recipe Search</h1>
+  <br>
+  <div data-controller='search'>
+    <%= form_with(url: search_results_path, method: :get, remote: true) do |form| %>
+      <%= form.text_area :ingredients, placeholder: 'Enter ingredients (comma-separated)', data: {search_target: 'ingredients'} %><br>
+      <%= form.submit 'Search', data: {action: "click->search#results"} %>
+    <% end %>
+  </div>
+
+  <div class="search-result-wrapper">
+    <h1>Search Results</h1>
+    <div class="grid grid-cols-4 gap-4 results">
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+<%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+<table class='table-auto border rounded-3xl w-full overflow-hidden'>
+  <thead>
+    <tr class='border bg-c-midnight text-white'>
+      <th class=' p-5'>Title</th>
+      <th class=' p-5'>Cook time</th>
+      <th class=' p-5'>Prep time</th>
+      <th class=' p-5'>Ingredients list</th>
+      <th class=' p-5'>Ratings</th>
+      <th class=' p-5'>Cuisine</th>
+      <th class=' p-5'>Category</th>
+      <th class=' p-5'>Author</th>
+      <th class=' p-5'>Images</th>
+      <th class=' p-5' colspan="3">Options</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% recipes.each do |recipe| %>
+      <tr id="recipe_<%= recipe.id %>">
+        <td class='border text-center bg-white hover:bg-c-grey'><%= recipe.title %></td>
+        <td class='border text-center bg-white hover:bg-c-grey'><%= recipe.cook_time %></td>
+        <td class='border text-center bg-white hover:bg-c-grey'><%= recipe.prep_time %></td>
+        <td class='border text-center bg-white hover:bg-c-grey'><%= recipe.ingredients_list %></td>
+        <td class='border text-center bg-white hover:bg-c-grey'><%= recipe.ratings %></td>
+        <td class='border text-center bg-white hover:bg-c-grey'><%= recipe.cuisine %></td>
+        <td class='border text-center bg-white hover:bg-c-grey'><%= recipe.category %></td>
+        <td class='border text-center bg-white hover:bg-c-grey'><%= recipe.author %></td>
+        <td class='border text-center bg-white hover:bg-c-grey'><%= image_tag recipe.image, size: "25" %></td>
+        <td class='border text-center bg-white hover:bg-c-grey'><%= link_to "Show", recipe, class: "" %></td>
+        <td class='border text-center bg-white hover:bg-c-grey'><%= link_to 'Edit', edit_recipe_path(recipe), class: "" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<%
+=begin%>
+ <div id="<%= dom_id recipe %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Title:</strong>
+    <%= recipe.title %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Cook time:</strong>
+    <%= recipe.cook_time %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Prep time:</strong>
+    <%= recipe.prep_time %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Ingredients:</strong>
+    <%= recipe.ingredients %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Ratings:</strong>
+    <%= recipe.ratings %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Cuisine:</strong>
+    <%= recipe.cuisine %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Category:</strong>
+    <%= recipe.category %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Author:</strong>
+    <%= recipe.author %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Image:</strong>
+    <%= recipe.image %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this recipe", recipe, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this recipe', edit_recipe_path(recipe), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div> 
+<%
+=end%>
