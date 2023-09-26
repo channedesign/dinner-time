@@ -4,7 +4,7 @@ class IngredientsController < ApplicationController
   # GET /ingredients or /ingredients.json
   def index
     @ingredients_count = Ingredient.all.count
-    @pagy, @ingredients = pagy(Ingredient.order(name: :asc))
+    @pagy, @ingredients = pagy(Ingredient.all.order(name: :asc))
   end
 
   # GET /ingredients/1 or /ingredients/1.json

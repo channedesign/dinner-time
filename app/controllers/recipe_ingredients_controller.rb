@@ -3,7 +3,7 @@ class RecipeIngredientsController < ApplicationController
 
   # GET /recipe_ingredients or /recipe_ingredients.json
   def index
-    @recipe_ingredients = RecipeIngredient.all
+    @pagy, @recipe_ingredients = pagy(RecipeIngredient.all)
   end
 
   # GET /recipe_ingredients/1 or /recipe_ingredients/1.json

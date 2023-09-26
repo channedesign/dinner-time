@@ -3,7 +3,8 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    @pagy, @recipes = pagy(Recipe.all)
+    @recipes_count = Recipe.all.count
+    @pagy, @recipes = pagy(Recipe.all.order(title: :asc))
   end
 
   # GET /recipes/1 or /recipes/1.json

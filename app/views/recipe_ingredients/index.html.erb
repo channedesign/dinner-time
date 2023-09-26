@@ -9,6 +9,7 @@
   </div>
 
   <div id="recipe_ingredients" class="min-w-full">
+  <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
     <%= render @recipe_ingredients %>
   </div>
 </div>
