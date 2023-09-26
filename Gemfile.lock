@@ -76,6 +76,8 @@ GEM
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    dockerfile-rails (1.5.10)
+      rails (>= 3.0.0)
     erubi (1.12.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -117,6 +119,8 @@ GEM
       net-protocol
     nio4r (2.5.9)
     nokogiri (1.15.4-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
     pagy (6.0.4)
     parslet (1.8.2)
@@ -163,6 +167,11 @@ GEM
     redis (4.8.1)
     reline (0.3.8)
       io-console (~> 0.5)
+    sentry-rails (5.11.0)
+      railties (>= 5.0)
+      sentry-ruby (~> 5.11.0)
+    sentry-ruby (5.11.0)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -174,6 +183,8 @@ GEM
       railties (>= 6.0.0)
     stringio (3.0.8)
     tailwindcss-rails (2.0.30-x86_64-darwin)
+      railties (>= 6.0.0)
+    tailwindcss-rails (2.0.30-x86_64-linux)
       railties (>= 6.0.0)
     thor (1.2.2)
     timeout (0.4.0)
@@ -195,10 +206,12 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap
   debug
+  dockerfile-rails (>= 1.5)
   importmap-rails
   ingredient_parser
   jbuilder
@@ -207,6 +220,8 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.4)
   redis (~> 4.0)
+  sentry-rails (~> 5.11)
+  sentry-ruby (~> 5.11)
   sprockets-rails
   stimulus-rails
   tailwindcss-rails
