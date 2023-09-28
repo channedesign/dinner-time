@@ -3,22 +3,19 @@ class SearchController < ApplicationController
   end
 
   def results
-    ingredients = params[:ingredients].split(',').map { |ingredient| ingredient.strip.downcase }
-
+    ingredients = params[:ingredients].split(',').map { |ingredient| ingredient.gsub(/\([^)]*\)|[^a-zA-Z\s]/, "").strip.downcase }
+   
     @recipes = Recipe.joins(:ingredients)
-                    .where("ingredients.name LIKE ANY (array[?])", ingredients.map { |ingr| "%#{ingr.downcase}%" })
+                    .where("ingredients.name LIKE ANY (array[?])", ingredients.map { |ingr| "%#{ingr}%" })
                     .group('recipes.id')
                     .having('COUNT(DISTINCT ingredients.name) = ?', ingredients.length)
     
-    @recipes = @recipes.map { |recipe| recipe.ingredients.count == ingredients.count ? recipe : nil}.compact
 
-    puts "=============="
-    puts "Input ingredients count: #{ingredients.count}"
-    puts "Input ingredients: #{ingredients}"
-    puts @recipes.count
-    puts "=============="
+    @exact_recipes = @recipes.select { |recipe| recipe.ingredients.count == ingredients.length }
+    @exact_recipes.each { |recipe| recipe.is_exact = true }
+    
+    @extra_recipes = @recipes.reject { |recipe| @exact_recipes.include?(recipe) || (recipe.ingredients.count - ingredients.length).abs > 3 }
 
-    # render :results
     respond_to do |format|
       format.json
     end

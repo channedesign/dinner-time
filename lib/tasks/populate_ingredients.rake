@@ -13,9 +13,9 @@ namespace :populate do
       ingredients.each do |ingredient|
         
         begin
-          parsed_ingredient = ingredient_parser.parse(ingredient.split(",").first.gsub(pattern, "").downcase.squish.singularize)
+          parsed_ingredient = ingredient_parser.parse(ingredient.split(",").first.gsub(pattern, "").downcase.squish.pluralize)
         rescue
-          parsed_ingredient = ingredient_parser.parse(ingredient.gsub(pattern, "").downcase.squish.singularize)
+          parsed_ingredient = ingredient_parser.parse(ingredient.gsub(pattern, "").downcase.squish.pluralize)
           puts "================="
           puts "RESCUE"
           puts "This Ingredient: #{ingredient}"

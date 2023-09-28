@@ -1,7 +1,7 @@
 <div id="<%= dom_id ingredient %>">
   <p class="my-5">
     <strong class="block font-medium mb-1">Name:</strong>
-    <%= ingredient.name %>
+    <%= ingredient.name %> - <%= ingredient.recipes.count %>
   </p>
 
   <% if action_name != "show" %>

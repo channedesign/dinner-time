@@ -9,7 +9,7 @@ namespace :import do
           title: recipe_data['title'],
           cook_time: recipe_data['cook_time'],
           prep_time: recipe_data['prep_time'],
-          ingredients: recipe_data['ingredients'].join("\n"),
+          ingredients_list: recipe_data['ingredients'].join("\n"),
           ratings: recipe_data['ratings'],
           cuisine: recipe_data['cuisine'],
           category: recipe_data['category'],
