@@ -1,0 +1,2 @@
+class FtIngredient < ApplicationRecord
+end

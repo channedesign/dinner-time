@@ -82,6 +82,8 @@ GEM
     dockerfile-rails (1.5.10)
       rails (>= 3.0.0)
     erubi (1.12.0)
+    fasttext (0.2.4)
+      rice (>= 4.0.2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -170,6 +172,7 @@ GEM
     redis (4.8.1)
     reline (0.3.8)
       io-console (~> 0.5)
+    rice (4.0.4)
     sentry-rails (5.11.0)
       railties (>= 5.0)
       sentry-ruby (~> 5.11.0)
@@ -217,6 +220,7 @@ DEPENDENCIES
   bullet
   debug
   dockerfile-rails (>= 1.5)
+  fasttext
   importmap-rails
   ingredient_parser
   jbuilder
