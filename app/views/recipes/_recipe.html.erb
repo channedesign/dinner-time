@@ -2,6 +2,7 @@
 <table class='table-auto border rounded-3xl w-full overflow-hidden'>
   <thead>
     <tr class='border'>
+      <th class=' p-5'>ID</th>
       <th class=' p-5'>Title</th>
       <th class=' p-5'>Cook time</th>
       <th class=' p-5'>Prep time</th>
@@ -18,6 +19,7 @@
   <tbody>
     <% recipes.each do |recipe| %>
       <tr id="recipe_<%= recipe.id %>">
+        <td class='border text-center bg-white hover:bg-c-grey'><%= recipe.id %></td>
         <td class='border text-center bg-white hover:bg-c-grey'><%= recipe.title %></td>
         <td class='border text-center bg-white hover:bg-c-grey'><%= recipe.cook_time %></td>
         <td class='border text-center bg-white hover:bg-c-grey'><%= recipe.prep_time %></td>

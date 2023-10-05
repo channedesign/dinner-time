@@ -1,0 +1,11 @@
+<div class="flex flex-col justify-center items-center w-full mt-20" data-controller='predict-ingredients'>
+    <h1 class="text-2xl font-bold">Predict and fix</h1>
+    <div class="w-full text-center">
+      <%= form_with(url: predict_ingredients_path, method: :get, remote: true) do |form| %>
+        <%= form.text_area :ingredients_list, placeholder: 'Enter ingredients list (comma-separated)', data: {predict_ingredients_target: 'ingredientsList'}, class: "border rounded w-full h-48" %><br>
+        <%= form.submit 'Predict', data: {action: "click->predict-ingredients#results"}, class: "border rounded p-2 hover:bg-slate-200 hover:cursor-pointer" %>
+      <% end %>
+    </div>
+
+    <div class="prediction-results-wrapper w-full p-10"></div>
+</div>

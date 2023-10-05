@@ -1,0 +1,36 @@
+<%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+<table class='table-auto border rounded-3xl w-full overflow-hidden'>
+  <thead>
+    <tr class='border'>
+      <th class=' p-5'>ID</th>
+      <th class=' p-5'>Text</th>
+      <th class=' p-5'>Label</th>
+      <th class=' p-5' colspan="3">Options</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% ft_ingredients.each do |ingredient| %>
+      <tr id="ingredient_<%= ingredient.id %>">
+        <td class='border text-center bg-white hover:bg-c-grey'><%= ingredient.id %></td>
+        <td class='border text-center bg-white hover:bg-c-grey'><%= ingredient.text %></td>
+        <td class='border text-center bg-white hover:bg-c-grey'><%= ingredient.label %></td>
+        <td class='border text-center bg-white hover:bg-c-grey'><%= link_to "Show", @ft_ingredient, class: "" %></td>
+        <td class='border text-center bg-white hover:bg-c-grey'><%= link_to 'Edit', edit_ft_ingredient_path(ingredient), class: "" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+  <div class="flex flex-col justify-center items-center w-full mt-20" data-controller='predict-ingredients'>
+    <h1 class="text-2xl font-bold">Predict and fix</h1>
+    <div class="w-full text-center">
+      <%= form_with(url: predict_ingredients_path, method: :get, remote: true) do |form| %>
+        <%= form.text_area :ingredients_list, placeholder: 'Enter ingredients list (comma-separated)', data: {predict_ingredients_target: 'ingredientsList'}, class: "border rounded w-full h-48" %><br>
+        <%= form.submit 'Predict', data: {action: "click->predict-ingredients#results"}, class: "border rounded p-2 hover:bg-slate-200 hover:cursor-pointer" %>
+      <% end %>
+    </div>
+
+    <div class="prediction-results-wrapper w-full p-10"></div>
+  </div>
